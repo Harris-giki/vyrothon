@@ -12,8 +12,13 @@ export const metadata: Metadata = {
 const partners = [
   { name: "GDGoC — GIKI", org: "Ghulam Ishaq Khan Institute", img: "/community-partners/GIKI.png" },
   { name: "GDGoC — NUST", org: "National University of Sciences & Technology", letter: "N" },
-  { name: "GDGoC — FAST", org: "FAST-NUCES", letter: "F" },
+  { name: "GDGoC — FAST", org: "FAST-NUCES", img: "/community-partners/fast.png" },
   { name: "GDGoC — AIR", org: "Air University", img: "/community-partners/AIR.png" },
+  {
+    name: "GDGoC — PIEAS",
+    org: "Pakistan Institute of Engineering & Applied Sciences",
+    img: "/community-partners/pieas.png",
+  },
 ];
 
 export default function Partners() {
@@ -25,7 +30,7 @@ export default function Partners() {
         <div className="relative z-10 max-w-[1200px] mx-auto">
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Community &amp; Campus Outreach</span>
           <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight mb-5">
-            <span className="font-script italic" style={{ fontFamily: "var(--font-script)" }}>Our</span>{" "}
+            <span className="font-script">Our</span>{" "}
             <span className="font-heading text-gradient-purple">Partners</span>
           </h1>
           <p className="text-lg max-w-[600px] mx-auto leading-relaxed themed-fg-secondary">Vyro is partnering with university GDGoC chapters as Official Community &amp; Campus Outreach Partners. A meaningful, two-way partnership.</p>
@@ -40,7 +45,7 @@ export default function Partners() {
               <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Active Partners</span>
               <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight mb-4">
                 <span className="font-heading">GDGoC</span>{" "}
-                <span className="font-script italic themed-fg-secondary" style={{ fontFamily: "var(--font-script)" }}>University Chapters</span>
+                <span className="font-script themed-fg-secondary">University Chapters</span>
               </h2>
               <p className="text-lg max-w-[600px] mx-auto leading-relaxed themed-fg-secondary">Our official community partners driving on-campus marketing and event promotion.</p>
             </div>
@@ -70,7 +75,7 @@ export default function Partners() {
           <ScrollReveal>
             <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Become a Partner</span>
             <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight mb-5">
-              <span className="font-script italic" style={{ fontFamily: "var(--font-script)" }}>Want Your Chapter</span>{" "}
+              <span className="font-script">Want Your Chapter</span>{" "}
               <span className="font-heading text-gradient-purple">to Partner?</span>
             </h2>
             <p className="text-lg max-w-[600px] mx-auto leading-relaxed mb-10 themed-fg-secondary">We&apos;re always looking for university chapters that want to amplify tech culture on campus.</p>

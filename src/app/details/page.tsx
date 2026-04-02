@@ -21,7 +21,7 @@ export default function Details() {
         <div className="relative z-10 max-w-[1200px] mx-auto">
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">April 18, 2026 &middot; Vyro Office, NSTP NUST</span>
           <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight mb-5">
-            <span className="font-script italic" style={{ fontFamily: "var(--font-script)" }}>Event</span>{" "}
+            <span className="font-script">Event</span>{" "}
             <span className="font-heading text-gradient-purple">Details</span>
           </h1>
           <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed">A full-day, three-stage hackathon where individuals prove their skills, teams build MVPs, and the best win $5,000 in prizes.</p>
@@ -36,7 +36,7 @@ export default function Details() {
               <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Hackathon Structure</span>
               <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight mb-4">
                 <span className="font-heading">Three Stages</span>{" "}
-                <span className="font-script italic themed-fg-secondary" style={{ fontFamily: "var(--font-script)" }}>to the Top</span>
+                <span className="font-script themed-fg-secondary">to the Top</span>
               </h2>
               <p className="text-lg themed-fg-secondary max-w-[600px] leading-relaxed">Each stage raises the bar. Only the best advance.</p>
             </div>
@@ -93,7 +93,7 @@ export default function Details() {
               <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">MVP Evaluation</span>
               <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight mb-4">
                 <span className="font-heading">How Teams Are</span>{" "}
-                <span className="font-script italic text-gradient-purple" style={{ fontFamily: "var(--font-script)" }}>Judged</span>
+                <span className="font-script text-gradient-purple">Judged</span>
               </h2>
               <p className="text-lg themed-fg-secondary max-w-[600px] leading-relaxed">Clear criteria. Fair assessment. Real-world relevance.</p>
             </div>
@@ -125,7 +125,7 @@ export default function Details() {
               <div className="mb-16">
                 <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Presentation Guidelines</span>
                 <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight mb-4">
-                  <span className="font-script italic" style={{ fontFamily: "var(--font-script)" }}>8-Minute</span>{" "}
+                  <span className="font-script">8-Minute</span>{" "}
                   <span className="font-heading">Window</span>
                 </h2>
                 <p className="text-lg themed-fg-secondary max-w-[600px] leading-relaxed">Each team presents in a strict 8-minute format. Teams exceeding time may be penalized.</p>
@@ -160,7 +160,7 @@ export default function Details() {
             <div className="text-center mb-16">
               <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Prizes &amp; Opportunities</span>
               <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight">
-                <span className="font-script italic" style={{ fontFamily: "var(--font-script)" }}>What&apos;s</span>{" "}
+                <span className="font-script">What&apos;s</span>{" "}
                 <span className="font-heading text-gradient-purple">at Stake</span>
               </h2>
             </div>
@@ -216,7 +216,7 @@ export default function Details() {
               <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Event Day</span>
               <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight mb-4">
                 <span className="font-heading">Schedule</span>{" "}
-                <span className="font-script italic themed-fg-secondary" style={{ fontFamily: "var(--font-script)" }}>Overview</span>
+                <span className="font-script themed-fg-secondary">Overview</span>
               </h2>
               <p className="text-lg themed-fg-secondary max-w-[600px] leading-relaxed">Saturday, April 18, 2026 — Full day at Vyro Office, NSTP NUST.</p>
             </div>
@@ -276,7 +276,7 @@ export default function Details() {
           <ScrollReveal>
             <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Spots Are Limited</span>
             <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight mb-5">
-              <span className="font-script italic" style={{ fontFamily: "var(--font-script)" }}>Secure</span>{" "}
+              <span className="font-script">Secure</span>{" "}
               <span className="font-heading text-gradient-purple">Your Place</span>
             </h2>
             <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed mb-10">Don&apos;t wait. Registrations close when capacity is reached.</p>

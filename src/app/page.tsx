@@ -19,18 +19,25 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-[900px]">
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full mb-10 animate-fade-in-up" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot" />
-            <span className="text-xs font-medium themed-fg-secondary uppercase tracking-widest">Prize Pool</span>
-            <span className="font-heading font-bold text-sm text-gradient-gold">$5,000 USD</span>
+          <div
+            className="inline-flex items-center gap-2.5 sm:gap-3 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full mb-10 animate-fade-in-up"
+            style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
+            <span className="text-[11px] sm:text-xs font-medium themed-fg-secondary uppercase tracking-widest">
+              Prize Pool
+            </span>
+            <span className="font-heading font-bold text-sm sm:text-base text-gradient-gold">
+              $5,000 USD
+            </span>
           </div>
 
           <h1 className="text-[clamp(3rem,9vw,7rem)] font-bold leading-[1.05] tracking-tight mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            <span className="font-script italic" style={{ fontFamily: "var(--font-script)" }}>Build the</span>{" "}
+            <span className="font-script">Build the</span>{" "}
             <span className="font-heading text-gradient-purple">Future,</span>
             <br />
             <span className="font-heading">Unbound by</span>{" "}
-            <span className="font-script italic text-glow-purple" style={{ fontFamily: "var(--font-script)" }}>Limits</span>
+            <span className="font-script text-glow-purple">Limits</span>
           </h1>
 
           <p className="text-[clamp(1rem,2vw,1.25rem)] max-w-[600px] mx-auto mb-14 leading-relaxed animate-fade-in-up themed-fg-secondary" style={{ animationDelay: "0.2s" }}>
@@ -71,7 +78,7 @@ export default function Home() {
               <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">How It Works</span>
               <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight mb-4">
                 <span className="font-heading">Three Stages.</span>{" "}
-                <span className="font-script italic text-gradient-purple" style={{ fontFamily: "var(--font-script)" }}>Top 3 Winners.</span>
+                <span className="font-script text-gradient-purple">Top 3 Winners.</span>
               </h2>
               <p className="text-lg max-w-[600px] mx-auto leading-relaxed themed-fg-secondary">A structured, multi-stage hackathon designed to test individual skill and team execution.</p>
             </div>
@@ -104,7 +111,7 @@ export default function Home() {
           <ScrollReveal>
             <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Don&apos;t Miss Out</span>
             <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight mb-3">
-              <span className="block font-script italic mb-1" style={{ fontFamily: "var(--font-script)" }}>Ready to Build</span>
+              <span className="block font-script mb-1">Ready to Build</span>
               <span className="block font-heading text-gradient-purple">Something Extraordinary?</span>
             </h2>
             <p className="text-sm font-semibold tracking-wide text-brand-purple mb-6">Three Stages. Top 3 Winners.</p>

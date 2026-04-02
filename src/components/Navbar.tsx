@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
@@ -11,8 +10,6 @@ import {
   useScroll,
   AnimatePresence,
 } from "motion/react";
-import { logoSrc } from "@/lib/site";
-
 const links = [
   { href: "/", label: "Home" },
   { href: "/details", label: "Event Details" },
@@ -47,20 +44,12 @@ export function Navbar() {
 
   return (
     <>
-      {/* Fixed top-left: Logo + Name */}
+      {/* Fixed top-left: Wordmark */}
       <Link
         href="/"
-        className="fixed top-5 left-6 z-50 flex items-center gap-2.5 font-heading font-bold text-sm tracking-tight"
+        className="fixed top-5 left-6 z-50 font-heading font-bold text-sm tracking-tight"
       >
-        <Image
-          src={logoSrc}
-          alt="Vyro"
-          width={28}
-          height={28}
-          className="themed-logo"
-          unoptimized
-        />
-        <span className="hidden sm:inline">VYROTHON</span>
+        VYROTHON
       </Link>
 
       {/* Fixed top-right: Theme toggle */}

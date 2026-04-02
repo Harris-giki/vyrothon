@@ -25,6 +25,14 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 }
 
+/* Handwritten (Caveat) — thin stroke; overrides inherited heading bold */
+.font-script {
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
+}
+
 /* ── Theme Variables ───────────────────────── */
 
 :root {
@@ -120,6 +128,17 @@ body {
 
 /* ── Gradient Text ─────────────────────────── */
 
+/* background-clip: text clips descenders (d, g, y) unless box has extra vertical room */
+.text-gradient-primary,
+.text-gradient-purple,
+.text-gradient-gold {
+  display: inline-block;
+  padding-bottom: 0.18em;
+  line-height: 1.2;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .text-gradient-primary {
   background: linear-gradient(135deg, #5b21b6, #6d28d9, #0e7490);
   -webkit-background-clip: text;
@@ -146,6 +165,12 @@ body {
   background-clip: text;
 }
 
+/* Script + gradient: Caveat descenders need extra room under the clip box */
+.font-script.text-gradient-purple {
+  padding-bottom: 0.28em;
+  line-height: 1.35;
+}
+
 /* ── Purple Glow Text ──────────────────────── */
 
 .text-glow-purple {
@@ -166,7 +191,7 @@ body {
 /* ── Buttons ───────────────────────────────── */
 
 .btn-primary {
-  background: linear-gradient(135deg, #5b21b6, #6d28d9, #0891b2);
+  background: #5b21b6;
   box-shadow: 0 0 30px rgba(91, 33, 182, 0.35), 0 4px 15px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
@@ -175,11 +200,12 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 .btn-primary:hover {
+  background: #6d28d9;
   transform: translateY(-2px);
   box-shadow: 0 0 50px rgba(91, 33, 182, 0.45), 0 8px 25px rgba(0, 0, 0, 0.4);
 }
@@ -225,10 +251,11 @@ body {
 /* ── Nav CTA Glow ──────────────────────────── */
 
 .nav-cta-glow {
-  background: linear-gradient(135deg, #5b21b6, #0891b2) !important;
+  background: #5b21b6 !important;
   box-shadow: 0 0 20px rgba(91, 33, 182, 0.35);
 }
 .nav-cta-glow:hover {
+  background: #6d28d9 !important;
   box-shadow: 0 0 30px rgba(91, 33, 182, 0.5) !important;
   transform: translateY(-1px);
 }
@@ -262,6 +289,7 @@ body {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: visible;
 }
 .animate-on-scroll.animated {
   opacity: 1;

@@ -19,7 +19,7 @@ export default function PartnerWithUs() {
           <p className="text-sm font-medium text-brand-purple mb-6 tracking-wide">Work with us</p>
 
           <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-tight mb-4">
-            <span className="font-script italic" style={{ fontFamily: "var(--font-script)" }}>Partnership</span>
+            <span className="font-script">Partnership</span>
             <br />
             <span className="font-heading text-glow-purple">Opportunities</span>
           </h1>
