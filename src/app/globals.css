@@ -176,8 +176,12 @@ body {
   background-clip: text;
 }
 
-/* Script + gradient: Caveat descenders need extra room under the clip box */
+/* Script + gradient: heading stack on .text-gradient-purple must not override Caveat */
 .font-script.text-gradient-purple {
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
   padding-bottom: 0.28em;
   line-height: 1.35;
 }

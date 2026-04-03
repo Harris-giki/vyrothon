@@ -23,7 +23,23 @@ export default function Details() {
             <span className="font-script">Event</span>{" "}
             <span className="font-heading text-gradient-purple">Details</span>
           </h1>
-          <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed">A full-day, three-stage hackathon where individuals prove their skills, teams build MVPs, and the best win $5,000 in prizes.</p>
+          <div className="flex flex-col items-center">
+            <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed mb-4">
+              Full-day, three-stage hackathon where individuals prove their skills, teams build MVPs, and the best win $5,000 in prizes.
+            </p>
+            <div
+              className="inline-flex items-center gap-2.5 sm:gap-3 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full"
+              style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
+              <span className="text-[11px] sm:text-xs font-medium themed-fg-secondary uppercase tracking-widest">
+                Prize Pool
+              </span>
+              <span className="font-heading font-bold text-sm sm:text-base text-gradient-gold">
+                $5,000 USD
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -19,17 +19,22 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-[900px]">
-          <div
-            className="inline-flex items-center gap-2.5 sm:gap-3 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full mb-10 animate-fade-in-up"
-            style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
-            <span className="text-[11px] sm:text-xs font-medium themed-fg-secondary uppercase tracking-widest">
-              Prize Pool
-            </span>
-            <span className="font-heading font-bold text-sm sm:text-base text-gradient-gold">
-              $5,000 USD
-            </span>
+          <div className="flex flex-col items-center mb-10 animate-fade-in-up">
+            <p className="text-sm sm:text-base max-w-[560px] mb-4 leading-relaxed themed-fg-secondary text-center">
+              Full-day, three-stage hackathon where individuals prove their skills, teams build MVPs, and the best win $5,000 in prizes.
+            </p>
+            <div
+              className="inline-flex items-center gap-2.5 sm:gap-3 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full"
+              style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
+              <span className="text-[11px] sm:text-xs font-medium themed-fg-secondary uppercase tracking-widest">
+                Prize Pool
+              </span>
+              <span className="font-heading font-bold text-sm sm:text-base text-gradient-gold">
+                $5,000 USD
+              </span>
+            </div>
           </div>
 
           <h1 className="text-[clamp(3rem,9vw,7rem)] font-bold leading-[1.05] tracking-tight mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
