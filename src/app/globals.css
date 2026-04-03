@@ -72,14 +72,22 @@
   --purple-glow: rgba(91, 33, 182, 0.35);
 }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+/* overflow-x on html (not body) so position:fixed wordmark stays viewport-locked in WebKit */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+@supports not (overflow: clip) {
+  html { overflow-x: hidden; }
+}
 
 body {
   font-family: var(--font-body);
   background-color: var(--bg);
   color: var(--fg);
   line-height: 1.6;
-  overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 

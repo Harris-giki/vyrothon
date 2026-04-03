@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -32,6 +34,28 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        {/* Wordmark: fixed in layout so position is not affected by client components / motion */}
+        <Link
+          href="/"
+          className="font-heading font-bold tracking-tight flex items-center gap-2.5 sm:gap-3 text-base sm:text-xl"
+          style={{
+            position: "fixed",
+            top: "max(1.25rem, env(safe-area-inset-top, 0px))",
+            left: "max(1.5rem, env(safe-area-inset-left, 0px))",
+            zIndex: 100,
+          }}
+        >
+          <Image
+            src={logoSrc}
+            alt=""
+            width={44}
+            height={44}
+            className="h-9 w-9 sm:h-11 sm:w-11 shrink-0 object-contain themed-logo"
+            unoptimized
+            priority
+          />
+          <span>VYROTHON</span>
+        </Link>
         <ThemeProvider>
           <Navbar />
           <main>{children}</main>

@@ -1,17 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { logoSrc } from "@/lib/site";
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  AnimatePresence,
-} from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/details", label: "Event Details" },
@@ -21,20 +14,7 @@ const links = [
 export function Navbar() {
   const pathname = usePathname();
   const { theme, toggle } = useTheme();
-  const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const prev = scrollY.getPrevious() ?? 0;
-    if (latest < 50) {
-      setVisible(true);
-    } else if (latest > prev && latest > 150) {
-      setVisible(false);
-    } else if (prev > latest) {
-      setVisible(true);
-    }
-  });
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -45,34 +25,10 @@ export function Navbar() {
 
   return (
     <>
-      {/* Fixed top-left: Wordmark (logo + larger type on home) */}
-      <Link
-        href="/"
-        className={`fixed top-5 left-6 z-50 font-heading font-bold tracking-tight flex items-center gap-2.5 sm:gap-3 ${
-          pathname === "/" ? "text-base sm:text-xl" : "text-sm"
-        }`}
-      >
-        {pathname === "/" ? (
-          <>
-            <Image
-              src={logoSrc}
-              alt=""
-              width={44}
-              height={44}
-              className="h-9 w-9 sm:h-11 sm:w-11 shrink-0 object-contain themed-logo"
-              unoptimized
-            />
-            <span>VYROTHON</span>
-          </>
-        ) : (
-          "VYROTHON"
-        )}
-      </Link>
-
       {/* Fixed top-right: Theme toggle */}
       <button
         onClick={toggle}
-        className="fixed top-5 right-6 z-50 w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0"
+        className="fixed top-5 right-6 z-[100] w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0"
         style={{
           background: "var(--card-bg)",
           backdropFilter: "blur(12px)",
@@ -116,14 +72,8 @@ export function Navbar() {
         )}
       </button>
 
-      {/* Floating center pill: Nav links + Register + Mobile hamburger */}
-      <AnimatePresence mode="wait">
-        <motion.nav
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="fixed top-4 inset-x-0 z-50 mx-auto max-w-fit"
-        >
+      {/* Floating center pill: Nav links + Register + Mobile hamburger — stays visible on scroll */}
+      <nav className="fixed top-4 inset-x-0 z-[90] mx-auto max-w-fit">
           <div
             className="flex items-center gap-1.5 rounded-full px-2 py-2 shadow-lg"
             style={{
@@ -196,8 +146,7 @@ export function Navbar() {
               />
             </button>
           </div>
-        </motion.nav>
-      </AnimatePresence>
+      </nav>
 
       {/* Mobile menu overlay */}
       <AnimatePresence>
