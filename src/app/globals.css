@@ -340,19 +340,6 @@ body {
   box-shadow: 0 0 0 2px #5b21b6;
 }
 
-/* ── Evaluation Table ──────────────────────── */
-
-.eval-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
-.eval-table thead { background: rgba(91, 33, 182, 0.1); }
-.eval-table th { padding: 16px 24px; text-align: left; font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #5b21b6; border-bottom: 1px solid var(--border); }
-.eval-table td { padding: 16px 24px; font-size: 0.9rem; border-bottom: 1px solid var(--border); color: var(--fg-secondary); }
-.eval-table tr:last-child td { border-bottom: none; }
-.eval-table tbody tr:hover { background: var(--card-bg); }
-.eval-table td:first-child { font-weight: 600; color: var(--fg); }
-
-[data-theme="dark"] .eval-table th { color: #a78bfa; }
-[data-theme="light"] .eval-table thead { background: rgba(91, 33, 182, 0.07); }
-
 /* ── Toast ─────────────────────────────────── */
 
 .toast { position: fixed; bottom: 24px; right: 24px; padding: 16px 24px; border-radius: 12px; font-size: 0.9rem; font-weight: 500; z-index: 9999; transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }

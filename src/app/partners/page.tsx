@@ -11,7 +11,8 @@ export const metadata: Metadata = {
 
 const partners = [
   { name: "GDGoC — GIKI", org: "Ghulam Ishaq Khan Institute", img: "/community-partners/GIKI.png" },
-  { name: "GDGoC — NUST", org: "National University of Sciences & Technology", letter: "N" },
+  { name: "GDGoC — NUST", org: "National University of Sciences & Technology", img: "/community-partners/Nust.png" },
+  { name: "GDGoC — COMSATS", org: "COMSATS University Islamabad", img: "/community-partners/comsats.png" },
   { name: "GDGoC — FAST", org: "FAST-NUCES", img: "/community-partners/fast.png" },
   { name: "GDGoC — AIR", org: "Air University", img: "/community-partners/AIR.png" },
   {
@@ -34,11 +35,17 @@ export default function Partners() {
             <span className="font-heading text-gradient-purple">Partners</span>
           </h1>
           <p className="text-lg max-w-[600px] mx-auto leading-relaxed themed-fg-secondary">Vyro is partnering with university GDGoC chapters as Official Community &amp; Campus Outreach Partners. A meaningful, two-way partnership.</p>
+          <div className="flex justify-center mt-8">
+            <a href="#active-partners" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
+              Explore More
+              <IconArrowRight className="w-[18px] h-[18px] rotate-90" aria-hidden />
+            </a>
+          </div>
         </div>
       </section>
 
       {/* ACTIVE PARTNERS */}
-      <section className="py-28 px-6">
+      <section id="active-partners" className="py-28 px-6 scroll-mt-28">
         <div className="max-w-[1200px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -52,16 +59,18 @@ export default function Partners() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="flex justify-center gap-8 flex-wrap">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-stretch max-w-[1100px] mx-auto">
               {partners.map((p) => (
-                <div key={p.name} className="flex flex-col items-center gap-3 px-10 py-8 rounded-2xl hover:-translate-y-1 transition-all min-w-[180px]" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
-                  {p.img ? (
-                    <Image src={p.img} alt={p.name} width={120} height={80} className="object-contain rounded-lg bg-white p-2" />
-                  ) : (
-                    <div className="w-14 h-14 rounded-[14px] flex items-center justify-center text-xl font-bold bg-gradient-to-br from-violet-800 to-cyan-700 text-white">{p.letter}</div>
-                  )}
-                  <span className="font-heading font-semibold text-sm text-center">{p.name}</span>
-                  <span className="text-[0.7rem] themed-fg-muted uppercase tracking-wider text-center">{p.org}</span>
+                <div
+                  key={p.name}
+                  className="flex h-full min-h-[260px] w-full max-w-[280px] mx-auto flex-col items-center gap-3 px-6 py-8 rounded-2xl transition-all hover:-translate-y-1 sm:max-w-none"
+                  style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
+                >
+                  <div className="flex h-[100px] w-full shrink-0 items-center justify-center rounded-lg bg-transparent p-3">
+                    <Image src={p.img} alt={p.name} width={200} height={100} className="max-h-[84px] w-auto max-w-full object-contain" />
+                  </div>
+                  <span className="font-heading font-semibold text-sm text-center leading-snug">{p.name}</span>
+                  <span className="text-[0.7rem] themed-fg-muted uppercase tracking-wider text-center leading-relaxed">{p.org}</span>
                 </div>
               ))}
             </div>

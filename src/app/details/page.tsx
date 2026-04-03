@@ -2,14 +2,13 @@ import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import {
   IconCode, IconMonitor, IconPen, IconBrain,
-  IconBook, IconVideo, IconChat, IconTrophy,
-  IconUsers, IconArrowRight,
+  IconArrowRight,
 } from "@/components/icons";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Event Details — VYROTHON 2026",
-    description: "Full details on stages, domains, evaluation criteria, presentation guidelines, and prize pool.",
+    description: "Full details on stages, domains, and event schedule.",
 };
 
 export default function Details() {
@@ -83,131 +82,6 @@ export default function Details() {
         </div>
       </section>
 
-      <hr style={{ borderColor: "var(--border)" }} />
-
-      {/* EVALUATION */}
-      <section id="evaluation" className="py-28 px-6">
-        <div className="max-w-[1200px] mx-auto">
-          <ScrollReveal>
-            <div className="mb-16">
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">MVP Evaluation</span>
-              <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight mb-4">
-                <span className="font-heading">How Teams Are</span>{" "}
-                <span className="font-script text-gradient-purple">Judged</span>
-              </h2>
-              <p className="text-lg themed-fg-secondary max-w-[600px] leading-relaxed">Clear criteria. Fair assessment. Real-world relevance.</p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal>
-            <table className="eval-table">
-              <thead><tr><th>Criterion</th><th>Focus</th><th>Weight</th></tr></thead>
-              <tbody>
-                {[
-                  ["Agentic AI Development", "Quality, originality, and autonomy of AI/ML features"],
-                  ["Community-Driven Impact", "Potential of solution to positively impact user/community"],
-                  ["Creative & Scalable AI Solutions", "Innovation and feasibility of scaling the AI solution"],
-                  ["Best UX & Design Practices", "UX clarity, intuitive design, and overall usability"],
-                ].map(([criterion, focus]) => (
-                  <tr key={criterion}>
-                    <td>{criterion}</td>
-                    <td>{focus}</td>
-                    <td><span className="inline-flex px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500/10 text-emerald-400">High</span></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </ScrollReveal>
-
-          {/* Presentation Guidelines */}
-          <div className="mt-28">
-            <ScrollReveal>
-              <div className="mb-16">
-                <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Presentation Guidelines</span>
-                <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight mb-4">
-                  <span className="font-script">8-Minute</span>{" "}
-                  <span className="font-heading">Window</span>
-                </h2>
-                <p className="text-lg themed-fg-secondary max-w-[600px] leading-relaxed">Each team presents in a strict 8-minute format. Teams exceeding time may be penalized.</p>
-              </div>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { icon: IconBook, title: "4 min — Product Pitch", desc: "Problem Statement, Solution, Tech Stack, Target Audience, Real-Life Customer Base.", color: "text-brand-purple bg-violet-950/25" },
-                { icon: IconVideo, title: "2 min — Live Demo", desc: "Demonstrate your working MVP. Show the core user flow and key features in action.", color: "text-cyan-400 bg-cyan-500/10" },
-                { icon: IconChat, title: "2 min — Q&A", desc: "Answer questions from the judges panel. Be concise, confident, and prepared.", color: "text-amber-400 bg-amber-500/10" },
-              ].map((c, i) => (
-                <ScrollReveal key={c.title} delay={i * 0.1}>
-                  <div className="card-hover relative rounded-2xl p-8 transition-all hover:-translate-y-1" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${c.color}`}><c.icon className="w-6 h-6" /></div>
-                    <h3 className="font-heading text-xl font-semibold mb-2">{c.title}</h3>
-                    <p className="text-sm themed-fg-secondary leading-relaxed">{c.desc}</p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr style={{ borderColor: "var(--border)" }} />
-
-      {/* PRIZES */}
-      <section id="prizes" className="py-28 px-6">
-        <div className="max-w-[1200px] mx-auto">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 block">Prizes &amp; Opportunities</span>
-              <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight">
-                <span className="font-script">What&apos;s</span>{" "}
-                <span className="font-heading text-gradient-purple">at Stake</span>
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal>
-            <div className="prize-glow relative text-center p-14 rounded-2xl mb-12 overflow-hidden" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
-              <div className="relative z-10">
-                <div className="font-heading text-[clamp(3rem,6vw,5rem)] font-bold text-gradient-gold leading-tight">$5,000</div>
-                <p className="text-lg themed-fg-secondary mt-2">Total Prize Pool (USD)</p>
-                <p className="text-xs themed-fg-muted mt-2">Distributed among the top 3 teams</p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { title: "1st Place", desc: "Grand prize for the winning team with the best execution, innovation, and product thinking.", color: "text-amber-400", gradient: "from-amber-500/20 to-amber-500/5" },
-              { title: "2nd Place", desc: "Runner-up prize for outstanding MVP delivery and strong technical execution.", color: "text-zinc-300", gradient: "from-zinc-400/20 to-zinc-400/5" },
-              { title: "3rd Place", desc: "Recognition and prize for exceptional creativity and impactful problem-solving.", color: "text-amber-600", gradient: "from-amber-700/20 to-amber-700/5" },
-            ].map((c, i) => (
-              <ScrollReveal key={c.title} delay={i * 0.1}>
-                <div className="card-hover relative rounded-2xl p-8 transition-all hover:-translate-y-1" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${c.color} bg-gradient-to-br ${c.gradient}`}>
-                    <IconTrophy className="w-6 h-6" />
-                  </div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">{c.title}</h3>
-                  <p className="text-sm themed-fg-secondary leading-relaxed">{c.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={0.2}>
-            <div className="mt-8 rounded-2xl p-8 flex items-start gap-5" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-brand-purple bg-violet-950/25">
-                <IconUsers className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-semibold mb-2">Mentorship</h3>
-                <p className="text-sm themed-fg-secondary leading-relaxed">Work alongside Vyro engineers, designers, and product managers throughout the event.</p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* SCHEDULE */}
       <section className="py-28 px-6 themed-bg-alt" style={{ borderTop: "1px solid var(--border)" }}>
         <div className="max-w-[1200px] mx-auto">
@@ -222,9 +96,9 @@ export default function Details() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <ScrollReveal>
-              <div className="rounded-2xl p-8" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:items-stretch">
+            <ScrollReveal className="h-full">
+              <div className="rounded-2xl p-8 h-full flex flex-col" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
                 <h3 className="font-heading text-lg mb-6"><span className="text-brand-purple">Morning</span> — Kickoff &amp; Stage 1</h3>
                 <div className="timeline">
                   {[
@@ -243,8 +117,8 @@ export default function Details() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.1}>
-              <div className="rounded-2xl p-8" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
+            <ScrollReveal className="h-full" delay={0.1}>
+              <div className="rounded-2xl p-8 h-full flex flex-col" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
                 <h3 className="font-heading text-lg mb-6"><span className="text-cyan-400">Afternoon</span> — Stage 2 &amp; 3</h3>
                 <div className="timeline">
                   {[

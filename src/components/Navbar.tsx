@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { logoSrc } from "@/lib/site";
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
 import {
@@ -14,7 +16,6 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/details", label: "Event Details" },
   { href: "/partners", label: "Partners" },
-  { href: "/partner-with-us", label: "Partner With Us" },
 ];
 
 export function Navbar() {
@@ -44,12 +45,28 @@ export function Navbar() {
 
   return (
     <>
-      {/* Fixed top-left: Wordmark */}
+      {/* Fixed top-left: Wordmark (logo + larger type on home) */}
       <Link
         href="/"
-        className="fixed top-5 left-6 z-50 font-heading font-bold text-sm tracking-tight"
+        className={`fixed top-5 left-6 z-50 font-heading font-bold tracking-tight flex items-center gap-2.5 sm:gap-3 ${
+          pathname === "/" ? "text-base sm:text-xl" : "text-sm"
+        }`}
       >
-        VYROTHON
+        {pathname === "/" ? (
+          <>
+            <Image
+              src={logoSrc}
+              alt=""
+              width={44}
+              height={44}
+              className="h-9 w-9 sm:h-11 sm:w-11 shrink-0 object-contain themed-logo"
+              unoptimized
+            />
+            <span>VYROTHON</span>
+          </>
+        ) : (
+          "VYROTHON"
+        )}
       </Link>
 
       {/* Fixed top-right: Theme toggle */}

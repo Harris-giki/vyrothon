@@ -84,20 +84,20 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:items-stretch">
             {[
               { icon: IconUser, title: "Individual Challenge", desc: "Choose your domain — Frontend, Backend, Design, or AI/ML. Compete solo to prove your skill. Top performers advance.", color: "text-brand-purple bg-violet-950/25", num: "01" },
               { icon: IconUsers, title: "Team MVP Build", desc: "Form cross-functional teams. Receive a real-world problem statement and build a functional MVP under pressure.", color: "text-cyan-400 bg-cyan-500/10", num: "02" },
               { icon: IconTrophy, title: "Finals & Awards", desc: "Present your MVP to the Vyro panel. Winners evaluated on execution, innovation, and product thinking. $5,000 in prizes for top 3 teams.", color: "text-amber-400 bg-amber-500/10", num: "03" },
             ].map((step, i) => (
-              <ScrollReveal key={step.title} delay={i * 0.1}>
-                <div className="card-hover relative rounded-2xl p-8 pt-12 transition-all duration-400 hover:-translate-y-1" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
+              <ScrollReveal key={step.title} className="h-full" delay={i * 0.1}>
+                <div className="card-hover relative flex h-full flex-col rounded-2xl p-8 pt-12 transition-all duration-400 hover:-translate-y-1" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
                   <span className="absolute top-8 right-8 font-mono text-xs themed-fg-muted tracking-wider">{step.num}</span>
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${step.color}`}>
+                  <div className={`w-12 h-12 shrink-0 rounded-xl flex items-center justify-center mb-5 ${step.color}`}>
                     <step.icon className="w-6 h-6" />
                   </div>
                   <h3 className="font-heading text-xl font-semibold mb-2">{step.title}</h3>
-                  <p className="text-sm leading-relaxed themed-fg-secondary">{step.desc}</p>
+                  <p className="text-sm leading-relaxed themed-fg-secondary flex-1">{step.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
