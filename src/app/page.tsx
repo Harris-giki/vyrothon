@@ -114,7 +114,10 @@ export default function Home() {
               <span className="block font-script mb-1">Ready to Build</span>
               <span className="block font-heading text-gradient-purple">Something Extraordinary?</span>
             </h2>
-            <p className="text-sm font-semibold tracking-wide text-brand-purple mb-6">Three Stages. Top 3 Winners.</p>
+            <p className="text-sm tracking-wide mb-6">
+              <span className="font-heading font-semibold text-brand-purple">Three Stages.</span>{" "}
+              <span className="font-script text-gradient-purple font-normal text-[clamp(1.05rem,2.2vw,1.35rem)]">Top 3 Winners.</span>
+            </p>
             <p className="text-lg max-w-[600px] mx-auto leading-relaxed mb-10 themed-fg-secondary">Join developers, designers, and AI engineers from across Pakistan. Compete, learn, and win.</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
