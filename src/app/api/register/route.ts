@@ -1,33 +1,55 @@
 import { NextResponse } from "next/server";
-import { appendToCsv, HEADERS } from "@/lib/csv";
+import { appendToCsv } from "@/lib/csv";
 import { appendToSheet, uploadToDrive } from "@/lib/google";
 
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
 
-    const track = formData.get("track") as string;
     const fullName = formData.get("fullName") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
     const university = formData.get("university") as string;
-    const domain = (formData.get("domain") as string) || "";
+    const domainList = formData.getAll("domains") as string[];
+    const domains = domainList.filter(Boolean).join("; ");
     const linkedin = (formData.get("linkedin") as string) || "";
     const github = (formData.get("github") as string) || "";
-    const behanceOrInsta = (formData.get("behanceOrInsta") as string) || "";
     const portfolio = (formData.get("portfolio") as string) || "";
     const motivation = (formData.get("motivation") as string) || "";
     const experience = (formData.get("experience") as string) || "";
+    const techStack = (formData.get("techStack") as string) || "";
+    const techChallenge = (formData.get("techChallenge") as string) || "";
+    const workEthic = (formData.get("workEthic") as string) || "";
     const resumeFile = formData.get("resume") as File | null;
 
-    if (!track || !fullName || !email || !phone || !university) {
+    if (!fullName || !email || !phone || !university) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    // Upload resume to Google Drive (if configured)
+    if (!domains) {
+      return NextResponse.json(
+        { error: "Select at least one domain" },
+        { status: 400 }
+      );
+    }
+
+    if (!linkedin?.trim() || !portfolio?.trim()) {
+      return NextResponse.json(
+        { error: "LinkedIn and Behance/Portfolio link are required" },
+        { status: 400 }
+      );
+    }
+
+    if (!techStack?.trim() || !techChallenge?.trim() || !workEthic?.trim()) {
+      return NextResponse.json(
+        { error: "Please answer all technical and work ethic questions" },
+        { status: 400 }
+      );
+    }
+
     let resumeLink = "";
     if (resumeFile && resumeFile.size > 0) {
       const buffer = Buffer.from(await resumeFile.arrayBuffer());
@@ -39,7 +61,6 @@ export async function POST(request: Request) {
       if (driveLink) {
         resumeLink = driveLink;
       } else {
-        // Fallback: save locally if Drive isn't configured
         const fs = await import("fs");
         const path = await import("path");
         const uploadsDir = path.join(process.cwd(), "data", "uploads");
@@ -53,44 +74,44 @@ export async function POST(request: Request) {
     }
 
     const row = {
-      track,
       fullName,
       email,
       phone,
       university,
-      domain,
+      domains,
       linkedin,
       github,
-      behanceOrInsta,
       portfolio,
       resumeLink,
       motivation,
       experience,
+      techStack,
+      techChallenge,
+      workEthic,
     };
 
-    // 1. Always write to local CSV as backup
     appendToCsv(row);
 
-    // 2. Append to Google Sheet (if configured)
     const sheetValues = [
       new Date().toISOString(),
-      track,
       fullName,
       email,
       phone,
       university,
-      domain,
+      domains,
       linkedin,
       github,
-      behanceOrInsta,
       portfolio,
       resumeLink,
       motivation,
       experience,
-      "", // Score - Overall
-      "", // Score - Round 1
-      "", // Score - Round 2
-      "", // Score - Round 3
+      techStack,
+      techChallenge,
+      workEthic,
+      "",
+      "",
+      "",
+      "",
     ];
 
     await appendToSheet(sheetValues);
