@@ -1,4 +1,4 @@
-import { existsSync, appendFileSync, writeFileSync } from "fs";
+import { existsSync, appendFileSync, writeFileSync, mkdirSync } from "fs";
 import { join } from "path";
 
 const CSV_DIR = join(process.cwd(), "data");
@@ -33,34 +33,42 @@ function escapeCsv(val: string): string {
   return val;
 }
 
+/** Local CSV is optional; Vercel and many hosts use a read-only filesystem — never throw. */
 export function appendToCsv(row: Record<string, string>) {
-  if (!existsSync(CSV_PATH)) {
-    writeFileSync(CSV_PATH, HEADERS.map(escapeCsv).join(",") + "\n", "utf-8");
+  try {
+    if (!existsSync(CSV_DIR)) {
+      mkdirSync(CSV_DIR, { recursive: true });
+    }
+    if (!existsSync(CSV_PATH)) {
+      writeFileSync(CSV_PATH, HEADERS.map(escapeCsv).join(",") + "\n", "utf-8");
+    }
+
+    const values = [
+      new Date().toISOString(),
+      row.fullName || "",
+      row.email || "",
+      row.phone || "",
+      row.university || "",
+      row.domains || "",
+      row.linkedin || "",
+      row.github || "",
+      row.portfolio || "",
+      row.resumeLink || "",
+      row.motivation || "",
+      row.experience || "",
+      row.techStack || "",
+      row.techChallenge || "",
+      row.workEthic || "",
+      "",
+      "",
+      "",
+      "",
+    ];
+
+    appendFileSync(CSV_PATH, values.map(escapeCsv).join(",") + "\n", "utf-8");
+  } catch (err) {
+    console.warn("[CSV] Skipping local file (read-only or unavailable):", err);
   }
-
-  const values = [
-    new Date().toISOString(),
-    row.fullName || "",
-    row.email || "",
-    row.phone || "",
-    row.university || "",
-    row.domains || "",
-    row.linkedin || "",
-    row.github || "",
-    row.portfolio || "",
-    row.resumeLink || "",
-    row.motivation || "",
-    row.experience || "",
-    row.techStack || "",
-    row.techChallenge || "",
-    row.workEthic || "",
-    "",
-    "",
-    "",
-    "",
-  ];
-
-  appendFileSync(CSV_PATH, values.map(escapeCsv).join(",") + "\n", "utf-8");
 }
 
 export { HEADERS };

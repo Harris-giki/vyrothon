@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { appendToCsv } from "@/lib/csv";
 import { appendToSheet, uploadToDrive } from "@/lib/google";
 
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -80,6 +83,15 @@ export async function POST(request: Request) {
     const driveLink = await uploadToDrive(buffer, fileName, resumeFile.type);
     if (driveLink) {
       resumeLink = driveLink;
+    } else if (process.env.VERCEL) {
+      // Vercel filesystem is read-only; local data/ fallback would throw → 500
+      return NextResponse.json(
+        {
+          error:
+            "Resume upload failed. Ensure Google Drive is connected (service account + GOOGLE_DRIVE_FOLDER_ID) in Vercel env, or try again later.",
+        },
+        { status: 503 }
+      );
     } else {
       const fs = await import("fs");
       const path = await import("path");
@@ -137,9 +149,13 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("[Register API] Error:", err);
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("[Register API] Error:", message, err);
     return NextResponse.json(
-      { error: "Internal server error" },
+      {
+        error: "Internal server error",
+        ...(process.env.NODE_ENV === "development" && { detail: message }),
+      },
       { status: 500 }
     );
   }

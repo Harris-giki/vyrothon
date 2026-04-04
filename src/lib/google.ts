@@ -2,19 +2,25 @@ import { google } from "googleapis";
 import { Readable } from "stream";
 
 function getAuth() {
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim();
+  const raw = process.env.GOOGLE_PRIVATE_KEY;
+  const key = raw?.replace(/\\n/g, "\n").trim();
 
   if (!email || !key) return null;
 
-  return new google.auth.JWT({
-    email,
-    key,
-    scopes: [
-      "https://www.googleapis.com/auth/spreadsheets",
-      "https://www.googleapis.com/auth/drive.file",
-    ],
-  });
+  try {
+    return new google.auth.JWT({
+      email,
+      key,
+      scopes: [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.file",
+      ],
+    });
+  } catch (e) {
+    console.error("[Google] JWT init failed:", e);
+    return null;
+  }
 }
 
 /**
@@ -62,9 +68,10 @@ export async function uploadToDrive(
 
   try {
     const drive = google.drive({ version: "v3", auth });
-    const stream = new Readable();
-    stream.push(buffer);
-    stream.push(null);
+    const mime =
+      mimeType && mimeType.trim()
+        ? mimeType
+        : "application/pdf";
 
     const res = await drive.files.create({
       requestBody: {
@@ -72,8 +79,8 @@ export async function uploadToDrive(
         parents: [folderId],
       },
       media: {
-        mimeType,
-        body: stream,
+        mimeType: mime,
+        body: Readable.from(buffer),
       },
       fields: "id, webViewLink",
     });

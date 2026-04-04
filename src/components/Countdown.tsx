@@ -9,12 +9,26 @@ function pad(n: number) {
 }
 
 export function Countdown() {
-  const [diff, setDiff] = useState(TARGET - Date.now());
+  // Avoid Date.now() in initial state — server vs client differ by ms → React #418 hydration error
+  const [diff, setDiff] = useState<number | null>(null);
 
   useEffect(() => {
-    const id = setInterval(() => setDiff(TARGET - Date.now()), 1000);
+    const tick = () => setDiff(TARGET - Date.now());
+    tick();
+    const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, []);
+
+  if (diff === null) {
+    return (
+      <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }} aria-hidden>
+        <p className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-4 text-center">
+          Registration Closes In
+        </p>
+        <div className="flex justify-center gap-3 sm:gap-4 flex-wrap mb-12 min-h-[120px] sm:min-h-[140px]" />
+      </div>
+    );
+  }
 
   if (diff <= 0) {
     return (
