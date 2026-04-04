@@ -36,9 +36,23 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!linkedin?.trim() || !portfolio?.trim()) {
+    if (!linkedin?.trim() || !github?.trim() || !portfolio?.trim()) {
       return NextResponse.json(
-        { error: "LinkedIn and Behance/Portfolio link are required" },
+        { error: "LinkedIn, GitHub, and Behance/Portfolio links are required" },
+        { status: 400 }
+      );
+    }
+
+    if (!motivation?.trim()) {
+      return NextResponse.json(
+        { error: "Motivation is required" },
+        { status: 400 }
+      );
+    }
+
+    if (!experience?.trim()) {
+      return NextResponse.json(
+        { error: "Please answer the hackathon experience question" },
         { status: 400 }
       );
     }
@@ -50,27 +64,32 @@ export async function POST(request: Request) {
       );
     }
 
-    let resumeLink = "";
-    if (resumeFile && resumeFile.size > 0) {
-      const buffer = Buffer.from(await resumeFile.arrayBuffer());
-      const timestamp = Date.now();
-      const safeName = fullName.replace(/[^a-zA-Z0-9]/g, "_");
-      const fileName = `${safeName}_${timestamp}_${resumeFile.name}`;
+    if (!resumeFile || typeof resumeFile === "string" || resumeFile.size === 0) {
+      return NextResponse.json(
+        { error: "Resume file is required (PDF, DOC, or DOCX)" },
+        { status: 400 }
+      );
+    }
 
-      const driveLink = await uploadToDrive(buffer, fileName, resumeFile.type);
-      if (driveLink) {
-        resumeLink = driveLink;
-      } else {
-        const fs = await import("fs");
-        const path = await import("path");
-        const uploadsDir = path.join(process.cwd(), "data", "uploads");
-        if (!fs.existsSync(uploadsDir)) {
-          fs.mkdirSync(uploadsDir, { recursive: true });
-        }
-        const localPath = path.join(uploadsDir, fileName);
-        fs.writeFileSync(localPath, buffer);
-        resumeLink = `local:${fileName}`;
+    let resumeLink = "";
+    const buffer = Buffer.from(await resumeFile.arrayBuffer());
+    const timestamp = Date.now();
+    const safeName = fullName.replace(/[^a-zA-Z0-9]/g, "_");
+    const fileName = `${safeName}_${timestamp}_${resumeFile.name}`;
+
+    const driveLink = await uploadToDrive(buffer, fileName, resumeFile.type);
+    if (driveLink) {
+      resumeLink = driveLink;
+    } else {
+      const fs = await import("fs");
+      const path = await import("path");
+      const uploadsDir = path.join(process.cwd(), "data", "uploads");
+      if (!fs.existsSync(uploadsDir)) {
+        fs.mkdirSync(uploadsDir, { recursive: true });
       }
+      const localPath = path.join(uploadsDir, fileName);
+      fs.writeFileSync(localPath, buffer);
+      resumeLink = `local:${fileName}`;
     }
 
     const row = {

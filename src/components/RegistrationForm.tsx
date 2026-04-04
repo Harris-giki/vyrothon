@@ -43,6 +43,12 @@ export function RegistrationForm() {
       return;
     }
 
+    const resume = formData.get("resume");
+    if (!resume || !(resume instanceof File) || resume.size === 0) {
+      showToast("Please upload your resume (PDF, DOC, or DOCX)", "error");
+      return;
+    }
+
     setSubmitting(true);
     try {
       const res = await fetch("/api/register", { method: "POST", body: formData });
@@ -147,7 +153,7 @@ export function RegistrationForm() {
         {/* LINKS */}
         <div className="mb-12">
           <h3 className="font-heading text-xl mb-6 pb-3" style={{ borderBottom: "1px solid var(--border)" }}>
-            Profiles &amp; portfolio
+            Profiles &amp; portfolio <span className="text-pink-400">*</span>
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
@@ -155,8 +161,8 @@ export function RegistrationForm() {
               <input name="linkedin" type="url" required className="form-input" placeholder="https://linkedin.com/in/username" />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">GitHub <span className="themed-fg-muted text-xs font-normal">(optional)</span></label>
-              <input name="github" type="url" className="form-input" placeholder="https://github.com/username" />
+              <label className="block text-sm font-medium mb-2">GitHub <span className="text-pink-400">*</span></label>
+              <input name="github" type="url" required className="form-input" placeholder="https://github.com/username" />
             </div>
           </div>
           <div className="mt-6">
@@ -174,7 +180,7 @@ export function RegistrationForm() {
         {/* TECHNICAL & WORK ETHIC */}
         <div className="mb-12">
           <h3 className="font-heading text-xl mb-6 pb-3" style={{ borderBottom: "1px solid var(--border)" }}>
-            Technical background
+            Technical background <span className="text-pink-400">*</span>
           </h3>
           <div className="space-y-6">
             <div>
@@ -215,7 +221,9 @@ export function RegistrationForm() {
 
         {/* RESUME UPLOAD */}
         <div className="mb-12">
-          <h3 className="font-heading text-xl mb-6 pb-3" style={{ borderBottom: "1px solid var(--border)" }}>Resume / Portfolio File</h3>
+          <h3 className="font-heading text-xl mb-6 pb-3" style={{ borderBottom: "1px solid var(--border)" }}>
+            Resume / Portfolio File <span className="text-pink-400">*</span>
+          </h3>
           <div
             className="p-8 border-2 border-dashed rounded-xl text-center cursor-pointer transition-all hover:border-violet-800 hover:bg-violet-950/[0.08]"
             style={{ borderColor: "var(--border)" }}
@@ -242,14 +250,23 @@ export function RegistrationForm() {
 
         {/* MOTIVATION */}
         <div className="mb-12">
-          <h3 className="font-heading text-xl mb-6 pb-3" style={{ borderBottom: "1px solid var(--border)" }}>Motivation &amp; experience</h3>
+          <h3 className="font-heading text-xl mb-6 pb-3" style={{ borderBottom: "1px solid var(--border)" }}>
+            Motivation &amp; experience <span className="text-pink-400">*</span>
+          </h3>
           <div className="mb-6">
             <label className="block text-sm font-medium mb-2">What are you obsessed with building? Why VYROTHON? <span className="text-pink-400">*</span></label>
             <textarea name="motivation" required className="form-textarea w-full min-h-[120px] resize-y" placeholder="Tell us what drives you, what you're building, and why this hackathon excites you..." />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-2">Any prior hackathon experience?</label>
-            <textarea name="experience" className="form-textarea w-full min-h-[80px] resize-y" placeholder="Brief description of hackathons you've participated in (if any)..." />
+            <label className="block text-sm font-medium mb-2">
+              Any prior hackathon experience? <span className="text-pink-400">*</span>
+            </label>
+            <textarea
+              name="experience"
+              required
+              className="form-textarea w-full min-h-[80px] resize-y"
+              placeholder="Describe past hackathons or write &quot;None — this would be my first&quot; if you haven&apos;t joined one before."
+            />
           </div>
         </div>
 
