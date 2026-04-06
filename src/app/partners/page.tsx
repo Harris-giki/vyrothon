@@ -13,7 +13,6 @@ const partners = [
   { name: "GDGoC — GIKI", org: "Ghulam Ishaq Khan Institute", img: "/community-partners/GIKI.png" },
   { name: "GDGoC — NUST", org: "National University of Sciences & Technology", img: "/community-partners/Nust.png" },
   { name: "GDGoC — COMSATS", org: "COMSATS University Islamabad", img: "/community-partners/comsats.png" },
-  { name: "GDGoC — FAST", org: "FAST-NUCES", img: "/community-partners/fast.png" },
   { name: "GDGoC — AIR", org: "Air University", img: "/community-partners/AIR.png" },
   {
     name: "GDGoC — PIEAS",
