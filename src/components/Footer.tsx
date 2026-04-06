@@ -28,7 +28,7 @@ export function Footer() {
             <div className="flex flex-col gap-1">
               <a href="https://vyro.ai" target="_blank" rel="noopener" className="text-sm themed-fg-muted hover:themed-fg transition-colors py-1">Vyro AI</a>
               <a href="https://imagine.art" target="_blank" rel="noopener" className="text-sm themed-fg-muted hover:themed-fg transition-colors py-1">ImagineArt</a>
-              <a href="https://vyro.ai/careers" target="_blank" rel="noopener" className="text-sm themed-fg-muted hover:themed-fg transition-colors py-1">Careers</a>
+              <a href="https://jobs.ashbyhq.com/imagineart" target="_blank" rel="noopener" className="text-sm themed-fg-muted hover:themed-fg transition-colors py-1">Careers</a>
             </div>
           </div>
         </div>

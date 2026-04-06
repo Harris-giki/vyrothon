@@ -123,7 +123,7 @@ export default function Details() {
                     { time: "11:30 AM – 01:30 PM", title: "Lunch & Networking", desc: "Break, food, and meet other participants and Vyro's team of engineers." },
                   ].map((item) => (
                     <div key={item.time} className="timeline-dot relative pl-6 pb-8">
-                      <p className="font-mono text-xs text-cyan-400 mb-1">{item.time}</p>
+                      <p className="font-mono text-xs text-brand-purple mb-1">{item.time}</p>
                       <p className="font-heading font-semibold mb-1">{item.title}</p>
                       <p className="text-sm themed-fg-muted">{item.desc}</p>
                     </div>
@@ -134,7 +134,7 @@ export default function Details() {
 
             <ScrollReveal className="h-full" delay={0.1}>
               <div className="rounded-2xl p-8 h-full flex flex-col" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
-                <h3 className="font-heading text-lg mb-6"><span className="text-cyan-400">Afternoon</span> — Stage 2 &amp; 3</h3>
+                <h3 className="font-heading text-lg mb-6"><span className="text-brand-purple">Afternoon</span> — Stage 2 &amp; 3</h3>
                 <div className="timeline">
                   {[
                     { time: "01:30 PM – 01:45 PM", title: "Stage 1 Results", desc: "Results announced. Top performers advance." },
@@ -144,7 +144,7 @@ export default function Details() {
                     { time: "06:30 PM (expected)", title: "Awards & Closing Ceremony", desc: "Winners announced. Prizes distributed. Networking." },
                   ].map((item) => (
                     <div key={item.time} className="timeline-dot relative pl-6 pb-8">
-                      <p className="font-mono text-xs text-cyan-400 mb-1">{item.time}</p>
+                      <p className="font-mono text-xs text-brand-purple mb-1">{item.time}</p>
                       <p className="font-heading font-semibold mb-1">{item.title}</p>
                       <p className="text-sm themed-fg-muted">{item.desc}</p>
                     </div>

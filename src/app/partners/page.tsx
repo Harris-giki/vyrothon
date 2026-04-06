@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { IconArrowRight, IconMail } from "@/components/icons";
+import { IconArrowRight } from "@/components/icons";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -94,9 +94,6 @@ export default function Partners() {
               <Link href="/partner-with-us" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
                 Explore Partnership <IconArrowRight className="w-[18px] h-[18px]" />
               </Link>
-              <a href="mailto:m.haris@imagine.art?subject=VYROTHON%202026%20Partnership" className="themed-btn-secondary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all">
-                <IconMail className="w-[18px] h-[18px]" /> Email Us
-              </a>
             </div>
           </ScrollReveal>
         </div>
