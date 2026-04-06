@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { logoSrc } from "@/lib/site";
+import { logoSrc, registerFormUrl } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -18,7 +18,7 @@ export function Footer() {
           <div>
             <h4 className="font-heading font-semibold text-xs uppercase tracking-wider mb-4">Get Involved</h4>
             <div className="flex flex-col gap-1">
-              <Link href="/register" className="text-sm themed-fg-muted hover:themed-fg transition-colors py-1">Register</Link>
+              <a href={registerFormUrl} target="_blank" rel="noopener noreferrer" className="text-sm themed-fg-muted hover:themed-fg transition-colors py-1">Register</a>
               <Link href="/partners" className="text-sm themed-fg-muted hover:themed-fg transition-colors py-1">Community Partners</Link>
               <Link href="/partner-with-us" className="text-sm themed-fg-muted hover:themed-fg transition-colors py-1">Partner With Us</Link>
             </div>

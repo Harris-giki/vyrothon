@@ -10,7 +10,7 @@ import { logoSrc } from "@/lib/site";
 export const metadata: Metadata = {
   title: "VYROTHON 2026 — Vyro Hackathon",
   description:
-    "Pakistan's largest fully in-house hackathon. 3 stages, $5,000+ prize pool. April 18, 2026 at Vyro Office, NSTP NUST.",
+    "Pakistan's largest fully in-house hackathon. 3 stages, ~$5,000 in prizes. April 18, 2026 at Vyro Office, NSTP NUST.",
   icons: { icon: logoSrc },
 };
 

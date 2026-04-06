@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { registerFormUrl } from "@/lib/site";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import {
   IconCode, IconMonitor, IconPen, IconBrain,
@@ -25,18 +26,15 @@ export default function Details() {
           </h1>
           <div className="flex flex-col items-center">
             <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed mb-4">
-              Full-day, three-stage hackathon where individuals prove their skills, teams build MVPs, and the best win $5,000 in prizes.
+              Full-day, three-stage hackathon where individuals prove their skills, teams build MVPs, and the best win ~$5,000 in prizes.
             </p>
             <div
               className="inline-flex items-center gap-2.5 sm:gap-3 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full"
               style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
-              <span className="text-[11px] sm:text-xs font-medium themed-fg-secondary uppercase tracking-widest">
-                Prize Pool
-              </span>
               <span className="font-heading font-bold text-sm sm:text-base text-gradient-gold">
-                $5,000 USD
+                ~$5,000
               </span>
             </div>
           </div>
@@ -92,7 +90,7 @@ export default function Details() {
             <div className="stage-accent relative rounded-2xl p-10 pl-12 overflow-hidden" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
               <p className="font-mono text-xs text-brand-purple uppercase tracking-[0.15em] font-semibold mb-3">Stage 03</p>
               <h3 className="font-heading text-2xl font-bold mb-4 tracking-tight">Final Presentations &amp; Awards</h3>
-              <p className="themed-fg-secondary leading-relaxed max-w-[700px]">Teams present their MVPs to the Vyro judging panel. Winners are evaluated on execution, innovation, and product thinking. The total prize pool of $5,000 USD is distributed to the top 3 teams.</p>
+              <p className="themed-fg-secondary leading-relaxed max-w-[700px]">Teams present their MVPs to the Vyro judging panel. Winners are evaluated on execution, innovation, and product thinking. ~$5,000 is distributed to the top 3 teams.</p>
             </div>
           </ScrollReveal>
         </div>
@@ -119,9 +117,10 @@ export default function Details() {
                 <div className="timeline">
                   {[
                     { time: "09:00 AM", title: "Check-in & Registration", desc: "Arrive, get your badge, and settle in." },
-                    { time: "09:30 AM", title: "Opening Ceremony", desc: "Welcome address and rules overview." },
-                    { time: "10:00 AM", title: "Stage 1 Begins", desc: "Domain-specific individual challenges kick off." },
-                    { time: "12:00 PM", title: "Stage 1 Ends & Lunch", desc: "Results announced. Top performers advance." },
+                    { time: "09:15 AM", title: "Opening Ceremony", desc: "Welcome address and rules overview." },
+                    { time: "09:45 AM", title: "Stage 1 Begins", desc: "Domain-specific individual challenges kick off." },
+                    { time: "11:30 AM", title: "Stage 1 Ends", desc: "Individual challenges conclude; results follow after lunch." },
+                    { time: "11:30 AM – 01:30 PM", title: "Lunch & Networking", desc: "Break, food, and meet other participants and Vyro's team of engineers." },
                   ].map((item) => (
                     <div key={item.time} className="timeline-dot relative pl-6 pb-8">
                       <p className="font-mono text-xs text-cyan-400 mb-1">{item.time}</p>
@@ -138,10 +137,11 @@ export default function Details() {
                 <h3 className="font-heading text-lg mb-6"><span className="text-cyan-400">Afternoon</span> — Stage 2 &amp; 3</h3>
                 <div className="timeline">
                   {[
-                    { time: "01:00 PM", title: "Team Formation & Problem Reveal", desc: "Cross-functional teams formed. Problem statements distributed." },
-                    { time: "01:30 PM", title: "Stage 2 — MVP Build", desc: "Teams build functional MVPs under pressure." },
-                    { time: "05:00 PM", title: "Stage 3 — Final Presentations", desc: "8-minute team presentations to judges panel." },
-                    { time: "06:30 PM", title: "Awards & Closing Ceremony", desc: "Winners announced. Prizes distributed. Networking." },
+                    { time: "01:30 PM – 01:45 PM", title: "Stage 1 Results", desc: "Results announced. Top performers advance." },
+                    { time: "01:45 PM – 02:00 PM", title: "Cross-Functional Team Formation", desc: "Teams formed and problem statements distributed." },
+                    { time: "02:00 PM", title: "Stage 2 — MVP Build", desc: "Teams build functional MVPs until 5:00 PM." },
+                    { time: "05:00 PM", title: "Stage 3 — Final Presentations", desc: "6-minute team presentations to judges panel." },
+                    { time: "06:30 PM (expected)", title: "Awards & Closing Ceremony", desc: "Winners announced. Prizes distributed. Networking." },
                   ].map((item) => (
                     <div key={item.time} className="timeline-dot relative pl-6 pb-8">
                       <p className="font-mono text-xs text-cyan-400 mb-1">{item.time}</p>
@@ -153,10 +153,6 @@ export default function Details() {
               </div>
             </ScrollReveal>
           </div>
-
-          <ScrollReveal>
-            <p className="text-center text-xs themed-fg-muted mt-10">* Schedule is tentative. Final schedule will be shared with registered participants.</p>
-          </ScrollReveal>
         </div>
       </section>
 
@@ -172,9 +168,9 @@ export default function Details() {
             <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed mb-10">Don&apos;t wait. Registrations close when capacity is reached.</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <Link href="/register" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
+            <a href={registerFormUrl} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
               Register Now <IconArrowRight className="w-[18px] h-[18px]" />
-            </Link>
+            </a>
           </ScrollReveal>
         </div>
       </section>

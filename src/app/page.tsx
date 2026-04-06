@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { registerFormUrl } from "@/lib/site";
 import { Countdown } from "@/components/Countdown";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import {
@@ -21,18 +22,15 @@ export default function Home() {
         <div className="relative z-10 max-w-[900px]">
           <div className="flex flex-col items-center mb-10 animate-fade-in-up">
             <p className="text-sm sm:text-base max-w-[560px] mb-4 leading-relaxed themed-fg-secondary text-center">
-              Full-day, three-stage hackathon where individuals prove their skills, teams build MVPs, and the best win $5,000 in prizes.
+              Full-day, three-stage hackathon where individuals prove their skills, teams build MVPs, and the best win ~$5,000 in prizes.
             </p>
             <div
               className="inline-flex items-center gap-2.5 sm:gap-3 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full"
               style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot shrink-0" />
-              <span className="text-[11px] sm:text-xs font-medium themed-fg-secondary uppercase tracking-widest">
-                Prize Pool
-              </span>
               <span className="font-heading font-bold text-sm sm:text-base text-gradient-gold">
-                $5,000 USD
+                ~$5,000
               </span>
             </div>
           </div>
@@ -65,9 +63,9 @@ export default function Home() {
           <Countdown />
 
           <div className="flex gap-4 justify-center flex-wrap animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
-            <Link href="/register" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
+            <a href={registerFormUrl} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
               Register Now <IconArrowRight className="w-[18px] h-[18px]" />
-            </Link>
+            </a>
             <Link href="/details" className="themed-btn-secondary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold hover:-translate-y-0.5 transition-all">
               Learn More
             </Link>
@@ -93,7 +91,7 @@ export default function Home() {
             {[
               { icon: IconUser, title: "Individual Challenge", desc: "Choose your domain — Frontend, Backend, Design, or AI/ML. Compete solo to prove your skill. Top performers advance.", color: "text-brand-purple bg-violet-950/25", num: "01" },
               { icon: IconUsers, title: "Team MVP Build", desc: "Form cross-functional teams. Receive a real-world problem statement and build a functional MVP under pressure.", color: "text-cyan-400 bg-cyan-500/10", num: "02" },
-              { icon: IconTrophy, title: "Finals & Awards", desc: "Present your MVP to the Vyro panel. Winners evaluated on execution, innovation, and product thinking. $5,000 in prizes for top 3 teams.", color: "text-amber-400 bg-amber-500/10", num: "03" },
+              { icon: IconTrophy, title: "Finals & Awards", desc: "Present your MVP to the Vyro panel. Winners evaluated on execution, innovation, and product thinking. ~$5,000 in prizes for top 3 teams.", color: "text-amber-400 bg-amber-500/10", num: "03" },
             ].map((step, i) => (
               <ScrollReveal key={step.title} className="h-full" delay={i * 0.1}>
                 <div className="card-hover relative flex h-full flex-col rounded-2xl p-8 pt-12 transition-all duration-400 hover:-translate-y-1" style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}>
@@ -127,9 +125,9 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Link href="/register" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
+              <a href={registerFormUrl} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
                 Register Now <IconArrowRight className="w-[18px] h-[18px]" />
-              </Link>
+              </a>
               <Link href="/details" className="themed-btn-secondary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all">
                 View Full Details
               </Link>

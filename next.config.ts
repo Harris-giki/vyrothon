@@ -2,8 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  // Prevent broken bundling of googleapis on Vercel (can cause 500 on /api/register at runtime)
-  serverExternalPackages: ["googleapis", "google-auth-library"],
+  async redirects() {
+    return [
+      {
+        source: "/register",
+        destination:
+          "https://forms.gle/iE48gzEPCb8drgUX8",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
