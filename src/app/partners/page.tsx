@@ -14,11 +14,6 @@ const partners = [
   { name: "GDGoC — NUST", org: "National University of Sciences & Technology", img: "/community-partners/Nust.png" },
   { name: "GDGoC — COMSATS", org: "COMSATS University Islamabad", img: "/community-partners/comsats.png" },
   { name: "GDGoC — AIR", org: "Air University", img: "/community-partners/AIR.png" },
-  {
-    name: "GDGoC — PIEAS",
-    org: "Pakistan Institute of Engineering & Applied Sciences",
-    img: "/community-partners/pieas.png",
-  },
 ];
 
 export default function Partners() {
