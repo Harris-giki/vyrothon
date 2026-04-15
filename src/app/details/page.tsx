@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { registerFormUrl } from "@/lib/site";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import {
   IconCode, IconMonitor, IconPen, IconBrain,
-  IconArrowRight,
 } from "@/components/icons";
 import type { Metadata } from "next";
 
@@ -166,11 +164,6 @@ export default function Details() {
               <span className="font-heading text-gradient-purple">Your Place</span>
             </h2>
             <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed mb-10">Don&apos;t wait. Registrations close when capacity is reached.</p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <a href={registerFormUrl} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
-              Register Now <IconArrowRight className="w-[18px] h-[18px]" />
-            </a>
           </ScrollReveal>
         </div>
       </section>

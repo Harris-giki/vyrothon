@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
 import { motion, AnimatePresence } from "motion/react";
-import { registerFormUrl } from "@/lib/site";
 const links = [
   { href: "/", label: "Home" },
   { href: "/details", label: "Event Details" },
@@ -107,15 +106,6 @@ export function Navbar() {
               ))}
             </div>
 
-            <a
-              href={registerFormUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-cta-glow px-4 py-1.5 rounded-full text-[13px] font-semibold text-white transition-all hidden sm:inline-flex"
-            >
-              Register Now
-            </a>
-
             {/* Mobile hamburger */}
             <button
               className="md:hidden flex flex-col gap-[4px] p-2 z-[1001]"
@@ -192,17 +182,6 @@ export function Navbar() {
             </Link>
           </li>
         ))}
-        <li>
-          <a
-            href={registerFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMobileOpen(false)}
-            className="nav-cta-glow block px-4 py-3 rounded-lg font-semibold text-white text-center mt-2"
-          >
-            Register Now
-          </a>
-        </li>
       </ul>
     </>
   );

@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { registerFormUrl } from "@/lib/site";
 import { Countdown } from "@/components/Countdown";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import {
-  IconCalendar, IconMapPin, IconClock, IconArrowRight,
+  IconCalendar, IconMapPin, IconClock,
   IconUser, IconUsers, IconTrophy,
 } from "@/components/icons";
 
@@ -36,11 +35,10 @@ export default function Home() {
           </div>
 
           <h1 className="text-[clamp(3rem,9vw,7rem)] font-bold leading-[1.05] tracking-tight mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            <span className="font-script">Build the</span>{" "}
-            <span className="font-heading text-gradient-purple">Future,</span>
+            <span className="font-script">Can you</span>{" "}
+            <span className="font-heading text-gradient-purple">Imagine</span>
             <br />
-            <span className="font-heading">Unbound by</span>{" "}
-            <span className="font-script text-glow-purple">Limits</span>
+            <span className="font-script text-glow-purple">Greatness?</span>
           </h1>
 
           <p className="text-[clamp(1rem,2vw,1.25rem)] max-w-[600px] mx-auto mb-14 leading-relaxed animate-fade-in-up themed-fg-secondary" style={{ animationDelay: "0.2s" }}>
@@ -63,9 +61,6 @@ export default function Home() {
           <Countdown />
 
           <div className="flex gap-4 justify-center flex-wrap animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
-            <a href={registerFormUrl} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
-              Register Now <IconArrowRight className="w-[18px] h-[18px]" />
-            </a>
             <Link href="/details" className="themed-btn-secondary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold hover:-translate-y-0.5 transition-all">
               Learn More
             </Link>
@@ -125,9 +120,6 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <div className="flex gap-4 justify-center flex-wrap">
-              <a href={registerFormUrl} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all">
-                Register Now <IconArrowRight className="w-[18px] h-[18px]" />
-              </a>
               <Link href="/details" className="themed-btn-secondary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all">
                 View Full Details
               </Link>
