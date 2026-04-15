@@ -37,7 +37,6 @@ export default function RootLayout({
         {/* Wordmark: fixed in layout so position is not affected by client components / motion */}
         <Link
           href="/"
-          className="font-heading font-bold tracking-tight flex items-center gap-2.5 sm:gap-3 text-base sm:text-xl"
           style={{
             position: "fixed",
             top: "max(1.25rem, env(safe-area-inset-top, 0px))",
@@ -46,15 +45,14 @@ export default function RootLayout({
           }}
         >
           <Image
-            src={logoSrc}
-            alt=""
-            width={44}
-            height={44}
-            className="h-9 w-9 sm:h-11 sm:w-11 shrink-0 object-contain themed-logo"
+            src="/Black logo@4x.png"
+            alt="VYROTHON 2026"
+            width={180}
+            height={50}
+            className="h-14 sm:h-20 w-auto object-contain themed-logo-wordmark"
             unoptimized
             priority
           />
-          <span>VYROTHON</span>
         </Link>
         <ThemeProvider>
           <Navbar />

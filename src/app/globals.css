@@ -104,6 +104,7 @@ body {
 .themed-border-hover:hover { border-color: var(--border-hover); }
 .themed-nav { background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
 .themed-logo { filter: invert(var(--logo-invert)); }
+.themed-logo-wordmark { filter: invert(calc(1 - var(--logo-invert))); }
 
 .themed-btn-secondary {
   background: var(--card-bg);

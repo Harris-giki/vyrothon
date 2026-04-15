@@ -34,7 +34,18 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto mt-10 pt-6 flex justify-between items-center flex-wrap gap-4" style={{ borderTop: "1px solid var(--border)" }}>
+      <div className="max-w-[1200px] mx-auto mt-12 flex justify-center">
+        <Image
+          src="/Black logo@4x.png"
+          alt="VYROTHON 2026"
+          width={260}
+          height={72}
+          className="h-16 sm:h-20 w-auto object-contain themed-logo-wordmark"
+          unoptimized
+        />
+      </div>
+
+      <div className="max-w-[1200px] mx-auto mt-8 pt-6 flex justify-between items-center flex-wrap gap-4" style={{ borderTop: "1px solid var(--border)" }}>
         <p className="text-xs themed-fg-muted">&copy; 2026 Vyro AI. All rights reserved.</p>
         <div className="flex gap-3">
           <a href="https://linkedin.com/company/vyro-ai" target="_blank" rel="noopener" aria-label="LinkedIn"
