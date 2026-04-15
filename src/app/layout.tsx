@@ -49,7 +49,7 @@ export default function RootLayout({
             alt="VYROTHON 2026"
             width={180}
             height={50}
-            className="h-10 sm:h-14 w-auto object-contain themed-logo-wordmark"
+            className="h-12 sm:h-16 w-auto object-contain themed-logo-wordmark"
             unoptimized
             priority
           />
