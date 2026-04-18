@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "motion/react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/details", label: "Event Details" },
+  { href: "/stage-1-problems", label: "Stage 1 Problems" },
   { href: "/partners", label: "Partners" },
 ];
 
