@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import {
@@ -8,6 +9,80 @@ import {
   IconPen,
   IconBrain,
 } from "@/components/icons";
+
+const DURATION_MS = (1 * 60 + 45) * 60 * 1000; // 1h 45m
+const STORAGE_KEY = "vyrothon-stage1-target";
+
+function pad(n: number) {
+  return String(n).padStart(2, "0");
+}
+
+function Stage1Timer() {
+  const [diff, setDiff] = useState<number | null>(null);
+
+  useEffect(() => {
+    let target: number;
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && Number(stored) > Date.now()) {
+      target = Number(stored);
+    } else {
+      target = Date.now() + DURATION_MS;
+      localStorage.setItem(STORAGE_KEY, String(target));
+    }
+
+    const tick = () => setDiff(Math.max(0, target - Date.now()));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  if (diff === null) {
+    return <div className="flex justify-center min-h-[120px] sm:min-h-[140px]" />;
+  }
+
+  const isOver = diff <= 0;
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  const units = [
+    { value: hours, label: "Hours" },
+    { value: minutes, label: "Minutes" },
+    { value: seconds, label: "Seconds" },
+  ];
+
+  return (
+    <div className="flex flex-col items-center">
+      <p className="text-xs font-semibold uppercase tracking-wider text-brand-purple mb-5">
+        {isOver ? "Stage 1 Complete" : "Time Remaining"}
+      </p>
+      {isOver ? (
+        <span className="font-mono text-3xl font-bold text-gradient-gold">
+          Time&apos;s Up!
+        </span>
+      ) : (
+        <div className="flex justify-center gap-3 sm:gap-4 flex-wrap">
+          {units.map((unit, i) => (
+            <div key={unit.label} className="flex items-center gap-3 sm:gap-4">
+              <div className="flex flex-col items-center min-w-[70px] sm:min-w-[90px]">
+                <span className="font-mono text-4xl sm:text-5xl font-bold leading-none text-gradient-primary py-4">
+                  {pad(unit.value)}
+                </span>
+                <span className="text-[0.7rem] uppercase tracking-[0.15em] text-muted font-medium">
+                  {unit.label}
+                </span>
+              </div>
+              {i < units.length - 1 && (
+                <span className="font-mono text-3xl text-muted/30 pt-1 animate-blink">:</span>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 const domains = [
   {
     label: "Frontend",
@@ -48,9 +123,10 @@ export default function Stage1Problems() {
             <span className="font-script">Stage 1</span>{" "}
             <span className="font-heading text-gradient-purple">Problems</span>
           </h1>
-          <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed">
+          <p className="text-lg themed-fg-secondary max-w-[600px] mx-auto leading-relaxed mb-10">
             Scan the QR code for your domain to access the problem statement. Good luck!
           </p>
+          <Stage1Timer />
         </div>
       </section>
 
